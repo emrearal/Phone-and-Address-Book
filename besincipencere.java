@@ -1,4 +1,4 @@
-						// TÜM KAYIRLARI YAZDIRMA SINIFI
+						// TÃœM KAYIRLARI YAZDIRMA SINIFI
 package adresdefteri;
 
 import java.io.File;
@@ -19,19 +19,19 @@ public class besincipencere {
 	
 	public static void tumunu () {
 		
-		try {   // burada txt deki toplam satır sayısı bulunuyor
+		try {   // burada txt deki toplam satÃ½r sayÃ½sÃ½ bulunuyor
 			FileReader input = new FileReader("adresveritabani.txt");
 			LineNumberReader count = new LineNumberReader(input);
 			sonsayac =((int)count.lines().count());
 			count.close();    
 		} catch (IOException e1) {
-			adresdefteri.durumbildir.setText("Veritabanı Okuma Hatası");
+			adresdefteri.durumbildir.setText("VeritabanÃ½ Okuma HatasÃ½");
 			e1.printStackTrace();
 		}
 			
 		String [][] data = new String [sonsayac/5][5];
 		
-		f=new JFrame("Tüm Liste / Sütun Başlığına Basarak Sıralayabilirsiniz ");   
+		f=new JFrame("TÃ¼m Liste / SÃ¼tun BaÃ¾lÃ½Ã°Ã½na Basarak SÃ½ralayabilirsiniz ");   
 			
 		try {
 		      File myObj = new File("adresveritabani.txt");
@@ -44,7 +44,7 @@ public class besincipencere {
 		    	  String data4 = myReader.nextLine();
 		    	  String data5 = myReader.nextLine();
 		    	  
-		    	if (!data2.equals("x")) {  		    		// boş olanları atla
+		    	if (!data2.equals("x")) {  		    		// boÃ¾ olanlarÃ½ atla
 		    	  data[i-silik][0] = data1;
 				  data[i-silik][1] = data2.toUpperCase();
 				  data[i-silik][2] = data3;
@@ -60,11 +60,11 @@ public class besincipencere {
 		      myReader.close();
 		 
 		     }catch (FileNotFoundException k) {
-		    	adresdefteri.durumbildir.setText("Okuma Hatası");
+		    	adresdefteri.durumbildir.setText("Okuma HatasÃ½");
 		    	k.printStackTrace();
 		     }
 		
-		String [][] bosluksuzdata = new String [(sonsayac/5)-silik][5];  // silinmiş boş hücreleri temizliyoruz
+		String [][] bosluksuzdata = new String [(sonsayac/5)-silik][5];  // silinmiÃ¾ boÃ¾ hÃ¼creleri temizliyoruz
 		
 		for (int i = 0; i < (sonsayac/5)-silik; i++) {   
 			
@@ -79,7 +79,8 @@ public class besincipencere {
        
 		String[] column = { "KOD", "AD-SOYAD", "TELEFON","ADRES","E-MAIL" };
 		          
-		    jt=new JTable(bosluksuzdata,column);    
+		    jt=new JTable(bosluksuzdata,column);
+		    jt.setDefaultEditor(Object.class, null);	// tabloya elle dÃ¼zeltme yapÄ±lamasÄ±n
 		    jt.setBounds(30,40,200,300);   
 		    jt.getColumnModel().getColumn(0).setPreferredWidth(10);
 		    jt.setAutoCreateRowSorter(true);
